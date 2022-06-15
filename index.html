@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .page {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            background-color: #dedede;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">Page1</div>
+    <div class="page" style="background-color: beige;">
+        <a href="#" id="prevent">AAAA</a>
+    </div>
+    
+</body>
+
+<script>
+    let a = document.querySelector('a#prevent');
+
+    if (a) {
+        let timer = ''; // 預約號碼
+        a.addEventListener('click', (e) => {
+            e.preventDefault(); // 取消 a 預設動作
+
+            console.log(`取消預約號碼:${timer}`);
+            clearTimeout(timer); // 取消上次預約號碼
+
+            timer = setTimeout(() => {
+                console.log(`執行預約號碼:${timer}`);
+            }, 3000); // 開始預約，並取得預約號碼
+
+            console.log(`取得預約號碼:${timer}`);
+        });
+    }
+
+    let timer2 = '';
+    let counter = 0;
+    timer2 = setInterval(() => {
+        // if (counter > 10) {
+        //     clearInterval(timer2);
+        // }
+        // console.log(`Interval: ${counter}`);
+
+        if (typeof wp == 'object') {
+            console.log('wp loaded.');
+            clearInterval(timer2);
+        } else {
+            console.log('wp not load.');
+        }
+        
+    }, 3000);
+
+    
+</script>
+</html>
